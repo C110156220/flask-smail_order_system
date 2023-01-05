@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XX炸雞店</title>
+    <script src="../static/index.js"></script>
+    <style>
+        #root{
+            width: 45cm;
+            font-family: '微軟正黑體','times new roman';
+        }
+       body{
+        text-align: center;
+       }
+       #tit{
+        position: fixed; top: 1cm;
+        width: 15cm;
+        background-color: gray;
+       }
+       .option{
+        position: fixed;top: 4cm;width: 20cm;left: 25%;
+        background-color: white ;
+        }
+        .option_type{
+        position: fixed;top: 8cm;width: 5cm;left: 15%;
+   
+        }
+       .choose{
+        background-color: white; border: 0px;
+        font-size: 18pt;width: 4cm;height: 1.5cm;
+       }
+       .choose:hover{
+        background-color: darkgrey;
+        color: white;
+       }
+       .foood{
+        position: absolute;top: 9cm;width: auto;left: 45%;
+        text-align: center;font-size: 18pt;
+
+       }
+       .foood_td{
+        width: 3.5cm;
+        
+       }
+       .choose_td{
+        border-right: 1px solid black;
+       }
+       .shoppingcar{
+        position: fixed;right: 15%;top: 8cm;
+        width: 6cm;
+        height: auto;
+        border: 1px dashed black;
+       }
+       .youcantseeme{
+        display: none;
+       }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <span class="tit">
+     <p style="font-size: 24pt;text-align: center;">🔥彬彬炸雞店🍗</p>   
+    </span>
+    <!-- form1 一般功能 -->
+    <form action="" method="post">
+        <span class="option">
+            <table class="option"><tr >
+            <td class="choose_td" style="border-left: 1px solid black;"><button class="choose" id="store">商店</button></td>
+            <td class="choose_td"><button class="choose" id="sales">優惠</button></td>
+            <td class="choose_td"><button class="choose" id="forme">關於我</button></td>
+            <td class="choose_td"><button class="choose" id="contact">聯絡我們</button></td>
+        </tr></table>
+    </form>
+    <hr style="width: 80%;position: fixed;top: 6.5cm;left: 5cm;"></span>
+    <!-- form 2 查詢變更 -->
+    <span class="foood">
+    <form method="post">
+        <p>以下是您的訂單!</p>
+        <p>{{order}}</p>
+        <p><button name="submit" value="send">送出</button>&nbsp;&nbsp;&nbsp;<button name="submit" value="back">回首頁</button></p>
+    </form>
+    </span>
+    
+    
+
+</body>
+</html>

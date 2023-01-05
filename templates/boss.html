@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彬彬 你好!</title>
+    <style>
+        .show{
+            text-align: center;
+            width: 30cm;
+            position: absolute;
+            right: 10%;
+            top: 5cm;
+            font-size: 16pt;
+        }
+        button{
+            width: 2cm;
+            border-radius: 10px;
+            border: 0px;
+        }
+        button:hover{
+            background-color:black;color: white;
+        }
+        .optionbtn{
+            width: 10cm;
+            height: 2cm;
+            font-size: 20pt;
+            border: 0px;
+        }
+        .optionbtn:hover{
+            background-color:black;color: white;
+        }
+        .hhr{
+            width: 100%;
+            border: 5px solid black;
+            position: absolute;
+            top: 3.5cm;
+        }
+        #root{
+            position: absolute;
+            top: 5cm;
+        }
+    </style>
+    <script>
+        res = document.getElementsByName('res')
+        document.getElementsByName('func')[0].onclick = function(){
+            done = document.getElementsByName('done')
+            for (let i = 0 ; i <= done.length ;i++ ){
+                done[i].onclick = function(){
+                    res[0].value = don[i].value
+                }
+            }
+        
+        }
+        document.getElementsByName('func')[1].onclick = function(){
+            chge = document.getElementsByName('chge')
+            del = document.getElementsByName('del')
+            for (let i = 0 ; i <= chge.length ;i++ ){
+                chge[i].onclick = function(){
+                    res[0].value = chge[i].value
+                }
+                del[i].onclick = function(){
+                    res[0].value = del[i].value
+                }
+            }
+        }
+       
+
+    </script>
+</head>
+<body>
+    <p style="font-size: 24pt;"><i>Welcome 彬彬炸物店 管理介面</i> </p>
+    <p style="font-size:18pt;">目前使用者:彬彬&nbsp;&nbsp;&nbsp;&nbsp;身份:管理員</p>
+    
+    <hr class="hhr">
+    <span id="root">
+    <form action="" method="post">
+    <button name="func" value="search"  class="optionbtn">搜尋新訂單</button> <br>
+    <br>
+    <button name="func" value="con" class="optionbtn">炸物管理</button><br>
+    </form>
+    </span>
+
+    <div id="show">
+        <form action="" method="post">
+        <input type="text" name="res">
+        
+        <table class="show">
+            <!-- 找 -->
+        {% if data != None %}
+        {% if func == "search" %}
+        <tr><td colspan="4">~現有訂單~</td></tr>
+        <tr><th>編號</th><th>下訂時間</th><th>訂單內容</th><th>功能</th></tr>
+            {% for i in data %}
+        <tr>
+            <td >{{i[0]}}</td>
+            <td>{{i[1]}}</td>
+            <td>{{i[2]}}</td>
+            <td><button name="done" value={{i[0]}} >完成</button></td>
+        </tr>
+        {% endfor %}
+        <!-- 管理 -->
+        {% elif func == "con" %}
+        <tr><td>~炸物管理~</td></tr>
+        <tr><th>編號</th><th>種類</th><th>產品名稱</th><th>目前價格</th><th colspan="2">功能</th></tr>
+            {% for i in data %}
+        <tr>
+            <td>{{i[0]}}</td>
+            <td>{{i[1]}}</td>
+            <td>{{i[2]}}</td>
+            <td>{{i[3]}}</td>
+            <td><button  name="chge" value={{i[0]}}>修改</button></td>
+            <td><button  name="dele" value={{i[0]}}>刪除</button></td>
+        </tr>
+            {% endfor %}
+        
+        {% elif func == "chge" %}
+            
+            <tr>
+                <td colspan="2">修改以下物品的相關資訊!</td>
+            </tr>
+        <tr>
+            <td>　編號　</td>
+            <td name="tmp"><input class='inpbox' name='chgedata' type="text" value={{data[0][0]}}></td>
+        </tr>
+        <tr>
+            <td>　類別　</td>
+            <td><input class='inpbox' name='chgedata' type="text" value={{data[0][1]}}></td>
+        </tr>
+        <tr>
+            <td>商品名稱</td>
+            <td><input class='inpbox' name='chgedata' type="text" value={{data[0][2]}}></td>
+        </tr>
+        <tr>
+            <td>商品價格</td>
+            <td><input class='inpbox' name='chgedata' type="text" value={{data[0][3]}}></td>
+        </tr>
+        <tr><td colspan="2"><button name="chgeit" style="width: 5cm;height: 1cm;font-size: 16pt;">修改資訊並上架</button></td></tr>
+        {% endif %}
+        {% endif %}
+    </table>
+</form>
+    </div>
+    
+</body>
+</html>

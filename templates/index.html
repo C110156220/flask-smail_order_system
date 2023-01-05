@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XX炸雞店</title>
+    <script src="../static/index.js"></script>
+    <style>
+        #root{
+            width: 45cm;
+            font-family: '微軟正黑體','times new roman';
+        }
+       body{
+        text-align: center;
+       }
+       .tit{
+        position: fixed; top: 0.5cm; left: 2.5%;
+        width: 15cm;
+       }
+       .option{
+        position: fixed;top: 2cm;width: 20cm;left: 40%;
+        background-color: white ;
+        }
+        .option_type{
+        position: fixed;top: 8cm;width: 5cm;left: 5%;
+   
+        }
+       .choose{
+        background-color: white; border: 0px;
+        font-size: 18pt;width: 4cm;height: 1.5cm;
+       }
+       .choose:hover{
+        background-color: darkgrey;
+        color: white;
+       }
+       .foood{
+        position: absolute;top: 4cm;width: 25cm;right: 20%;
+        text-align: center;font-size: 18pt;
+
+       }
+       .foood_td{
+        width: 5cm;
+        
+       }
+       .choose_td{
+        border-right: 1px solid black;
+       }
+       .shoppingcar{
+        position: fixed;right: 5%;top: 8cm;
+        width: 6cm;
+        height: auto;
+        border: 1px dashed black;
+       }
+       .youcantseeme{
+        display: none;
+       }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <span class="tit">
+     <p style="font-size: 36pt;text-align: center;">🔥彬彬炸雞店🍗</p>   
+    </span>
+    <!-- form1 一般功能 -->
+    <form action="" method="post">
+        <span class="option">
+            <table class="option"><tr >
+            <td class="choose_td" style="border-left: 1px solid black;"><button class="choose" id="store">商店</button></td>
+            <td class="choose_td"><button class="choose" id="sales">優惠</button></td>
+            <td class="choose_td"><button class="choose" id="forme">關於我</button></td>
+            <td class="choose_td"><button class="choose" id="contact">聯絡我們</button></td>
+        </tr></table>
+    </form>
+    <hr style="width: 90%;position: fixed;top: 4cm;left: 5%;">
+    <!-- form 2 查詢變更 -->
+    <form method="post"> 
+        <table class="option_type">
+            <tr>
+                <td><b style="font-size: 18pt;;">分類</b></td>
+            </tr>
+            <tr>
+                <td><button type="submit" class="choose" name="type" value="meat">我要吃肉肉</button></td>
+            </tr>
+            <tr>
+                <td><button type="submit" class="choose" name="type" value="veg">地上有菜菜</button></td>
+            </tr>
+            <tr>
+                <td><button type="submit" class="choose" name="type" value="other">其他炸東東</button></td>
+            </tr>
+            <tr>
+                <td><button type="submit" class="choose" name="type" value="drink">冰涼可以喝</button></td>
+            </tr>
+
+        </table>
+    </form>
+    <!-- fomr3 取值 -->
+    <form>
+        <table class='foood'>
+            <tr>
+                <td class="foood_td">編號</td>
+                <td style="width: 6cm;"><b>項目</b></td>
+                <td class="foood_td"><b>價格</b> </td>
+                <td  class="foood_td" colspan="4" style="text-align: center;">選擇數量</td>
+            </tr>
+            {% for item in data[0] %}
+            <tr>
+                <td class="foood_td" name="fdid">
+                    {{item[0]}}
+                </td>
+                <td style="width: 6cm;" name="fdname">
+                    {{item[1]}}
+                </td>
+                <td class="foood_td" name="fdprice">
+                    {{item[2]}}
+                </td>
+                <td class="foood_td" name="minus">
+                    -
+                </td>
+                <td class="foood_td">
+                    <td >
+                    <input type="text" name="fdqty" value="0" style="width: 1cm;text-align: center;background-color: white; border: 0px;font-size: 16pt;">
+                </td>
+                <td class="foood_td" name="plus">
+                    +
+                </td>
+            </tr>
+            {% endfor %}
+            <tr></tr>
+            <tr>
+                <td colspan="5"> </td>
+            </tr>
+
+    </table>
+
+    </form>
+    <div class="shoppingcar">
+            <p>🛒購物車🛒</p>
+            <form  method="post">
+            <span id="car"></span>
+            <span class="youcantseeme">
+                <input type="text" id='car_res' name="car_res" value="">
+            </span>
+            <button type="submit" name='submit'id="check" style="width: 1.5cm;border-radius: 10px;font-size: 20pt;position: fixed;top: 10cm;right: 1%;" value="check">送出訂單</button>
+            </form>
+    </div>
+    </span>
+    
+
+</body>
+</html>
